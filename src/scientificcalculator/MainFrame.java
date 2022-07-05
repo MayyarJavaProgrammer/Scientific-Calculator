@@ -16,7 +16,7 @@ public class MainFrame extends javax.swing.JFrame {
     //position is for number of char in user's input 
     //ch is ascii code for the char from user's input
     int pos = -1, ch;
-    
+
     public MainFrame() {
         initComponents();
     }
@@ -659,14 +659,17 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
 
+    //Fucn to add number/symbol/operand/point or not 
     public void autoAddorRemove(String button) {
         if (!resultField.getText().isEmpty()) {
+            //last char in user's input
             char lastChar = resultField.getText().charAt(resultField.getText().length() - 1);
 
             switch (button) {
+                //if user set symbol 
                 case "symbol" -> {
                     switch (lastChar) {
-                        case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e', 'π' -> {
+                        case 'e', 'π' -> {
                             resultField.setText(resultField.getText() + "×");
                         }
 
@@ -675,7 +678,7 @@ public class MainFrame extends javax.swing.JFrame {
                         }
                     }
                 }
-
+                //if user set number
                 case "number" -> {
                     switch (lastChar) {
                         case 'e', 'π' -> {
@@ -683,6 +686,7 @@ public class MainFrame extends javax.swing.JFrame {
                         }
 
                         case '0' -> {
+                            //Avoid repetition of zero
                             if (resultField.getText().equals("0") || resultField.getText().endsWith("+0") || resultField.getText().endsWith("-0")
                                     || resultField.getText().endsWith("^0") || resultField.getText().endsWith("%0") || resultField.getText().endsWith("×0")
                                     || resultField.getText().endsWith("÷0") || resultField.getText().endsWith("√0") || resultField.getText().endsWith("(0")
@@ -693,25 +697,27 @@ public class MainFrame extends javax.swing.JFrame {
 
                     }
                 }
-
+                //if user set operand
                 case "operand" -> {
                     switch (lastChar) {
+                        //Avoid repetition of operand
                         case '+', '-', '×', '÷', '%', '.' -> {
                             resultField.setText(resultField.getText().substring(0, resultField.getText().length() - 1));
                         }
                     }
                 }
-
+                //if user set point                
                 case "point" -> {
                     switch (lastChar) {
+                        //add zero before point
                         case '+', '-', '×', '÷', '%', '(', '√', 'π', 's', 'n', '^' -> {
                             resultField.setText(resultField.getText() + "0");
                         }
-
+                        //add operand before point
                         case ')' -> {
                             resultField.setText(resultField.getText() + "×0");
                         }
-
+                        //Avoid repetition of point
                         case '.' -> {
                             resultField.setText(resultField.getText().substring(0, resultField.getText().length() - 1));
                         }
@@ -720,13 +726,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         }
     }
-    
+
     //Func to go char forward in user's input
     public void nextChar() {
         //if we have next char set it else set -1
-        ch = (++pos < resultField.getText().length()) ? resultField.getText().charAt(pos) : -1;       
+        ch = (++pos < resultField.getText().length()) ? resultField.getText().charAt(pos) : -1;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu EditMenu;
     private javax.swing.JMenuItem aboutItem;

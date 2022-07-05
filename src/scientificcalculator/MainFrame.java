@@ -733,6 +733,17 @@ public class MainFrame extends javax.swing.JFrame {
         ch = (++pos < resultField.getText().length()) ? resultField.getText().charAt(pos) : -1;
     }
 
+    //Fucn to know is operand or not
+    public boolean isOperand(char operand) {
+        
+        if (ch == operand) {
+            nextChar();
+            return true;
+        }
+        
+        return false;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu EditMenu;
     private javax.swing.JMenuItem aboutItem;

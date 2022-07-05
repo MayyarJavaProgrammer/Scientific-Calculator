@@ -13,6 +13,10 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+    //position is for number of char in user's input 
+    //ch is ascii code for the char from user's input
+    int pos = -1, ch;
+    
     public MainFrame() {
         initComponents();
     }
@@ -716,7 +720,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         }
     }
-
+    
+    //Func to go char forward in user's input
+    public void nextChar() {
+        //if we have next char set it else set -1
+        ch = (++pos < resultField.getText().length()) ? resultField.getText().charAt(pos) : -1;       
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu EditMenu;
     private javax.swing.JMenuItem aboutItem;

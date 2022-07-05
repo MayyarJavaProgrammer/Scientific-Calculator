@@ -655,6 +655,68 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
 
+    public void autoAddorRemove(String button) {
+        if (!resultField.getText().isEmpty()) {
+            char lastChar = resultField.getText().charAt(resultField.getText().length() - 1);
+
+            switch (button) {
+                case "symbol" -> {
+                    switch (lastChar) {
+                        case '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e', 'π' -> {
+                            resultField.setText(resultField.getText() + "×");
+                        }
+
+                        case '.' -> {
+                            resultField.setText(resultField.getText() + "0×");
+                        }
+                    }
+                }
+
+                case "number" -> {
+                    switch (lastChar) {
+                        case 'e', 'π' -> {
+                            resultField.setText(resultField.getText() + "×");
+                        }
+
+                        case '0' -> {
+                            if (resultField.getText().equals("0") || resultField.getText().endsWith("+0") || resultField.getText().endsWith("-0")
+                                    || resultField.getText().endsWith("^0") || resultField.getText().endsWith("%0") || resultField.getText().endsWith("×0")
+                                    || resultField.getText().endsWith("÷0") || resultField.getText().endsWith("√0") || resultField.getText().endsWith("(0")
+                                    || resultField.getText().endsWith("cos0") || resultField.getText().endsWith("sin0") || resultField.getText().endsWith("tan0")) {
+                                resultField.setText(resultField.getText().substring(0, resultField.getText().length() - 1));
+                            }
+                        }
+
+                    }
+                }
+
+                case "operand" -> {
+                    switch (lastChar) {
+                        case '+', '-', '×', '÷', '%', '.' -> {
+                            resultField.setText(resultField.getText().substring(0, resultField.getText().length() - 1));
+                        }
+                    }
+                }
+
+                case "point" -> {
+                    switch (lastChar) {
+                        case '+', '-', '×', '÷', '%', '(', '√', 'π', 's', 'n', '^' -> {
+                            resultField.setText(resultField.getText() + "0");
+                        }
+
+                        case ')' -> {
+                            resultField.setText(resultField.getText() + "×0");
+                        }
+
+                        case '.' -> {
+                            resultField.setText(resultField.getText().substring(0, resultField.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu EditMenu;
     private javax.swing.JMenuItem aboutItem;

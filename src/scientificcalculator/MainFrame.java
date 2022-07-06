@@ -734,7 +734,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     //Fucn to know is sended char or not
-    public boolean isChar(char c) {
+    public boolean eat(char c) {
 
         if (ch == c) {
             nextChar();
@@ -756,9 +756,9 @@ public class MainFrame extends javax.swing.JFrame {
 //            eat(')');
 //        }
         //if it's first number is e         
-        if (isChar('e')) {
+        if (eat('e')) {
             x = Math.E;
-        } else if (isChar('π')) {
+        } else if (eat('π')) {
             x = Math.PI;
             //if it's number ascii code for ch between 9 and 0 
             //that mean it is number or it is point and that mean there is number
@@ -802,7 +802,7 @@ public class MainFrame extends javax.swing.JFrame {
             throw new RuntimeException("Unexpected" + (char) ch);
         }
         //after all this there is number in x... check if there is power symbol and then calculate x^(the next number from call again)
-        if (isChar('^')) {
+        if (eat('^')) {
             x = Math.pow(x, parseNumber());
         }
         return x;

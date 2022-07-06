@@ -733,14 +733,14 @@ public class MainFrame extends javax.swing.JFrame {
         ch = (++pos < resultField.getText().length()) ? resultField.getText().charAt(pos) : -1;
     }
 
-    //Fucn to know is operand or not
-    public boolean isOperand(char operand) {
-        
-        if (ch == operand) {
+    //Fucn to know is sended char or not
+    public boolean isChar(char c) {
+
+        if (ch == c) {
             nextChar();
             return true;
         }
-        
+
         return false;
     }
 

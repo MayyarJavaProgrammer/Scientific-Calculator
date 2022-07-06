@@ -743,6 +743,70 @@ public class MainFrame extends javax.swing.JFrame {
 
         return false;
     }
+//    public double parseInput() {
+//        nextChar();
+//    }
+    //Func to get first number (value) from user's input
+
+    public double parseNumber() {
+        double x;
+        int oldPos = pos;
+//        if (eat('(')) {
+//            x = parseExpression();
+//            eat(')');
+//        }
+        //if it's first number is e         
+        if (isChar('e')) {
+            x = Math.E;
+        } else if (isChar('π')) {
+            x = Math.PI;
+            //if it's number ascii code for ch between 9 and 0 
+            //that mean it is number or it is point and that mean there is number
+        } else if ((ch >= '0' && ch <= '9') || ch == '.') {
+            //get new pos while there is a number 
+            while ((ch >= '0' && ch <= '9') || ch == '.') {
+                nextChar();
+            }
+            //the number is the oldPos to pos (the number that get)
+            x = Double.parseDouble(resultField.getText().substring(oldPos, pos));
+            //if it is char like tan or cos (symbol) get old char to do the operatoin
+        } else if ((ch >= 'a' && ch <= 'z') || ch == '√') {
+            while ((ch >= 'a' && ch <= 'z') || ch == '√') {
+                nextChar();
+            }
+            String func = resultField.getText().substring(oldPos, pos);
+            x = parseNumber();
+            switch (func) {
+
+                case "√" -> {
+                    x = Math.sqrt(x);
+                }
+
+                case "sin" -> {
+                    x = Math.sin(Math.toRadians(x));
+                }
+
+                case "cos" -> {
+                    x = Math.cos(Math.toRadians(x));
+                }
+
+                case "tan" -> {
+                    x = Math.tan(Math.toRadians(x));
+                }
+
+                default -> {
+                    throw new RuntimeException("Unknown function: " + func);
+                }
+            }
+        } else {
+            throw new RuntimeException("Unexpected" + (char) ch);
+        }
+        //after all this there is number in x... check if there is power symbol and then calculate x^(the next number from call again)
+        if (isChar('^')) {
+            x = Math.pow(x, parseNumber());
+        }
+        return x;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu EditMenu;

@@ -740,6 +740,22 @@ public class MainFrame extends javax.swing.JFrame {
 //        nextChar();
 //    }
   
+    public double calculateLowerPriorityOperand() {
+        //calculate Higher first 
+        double x = calculateHigherPriorityOperand();
+        while(true) {
+            if(eat('×')) {
+                x *= parseNumber();
+            } else if(eat('÷')) {
+                x /= parseNumber();
+            }else if (eat('%')) {
+                x %= parseNumber();
+            } else {
+                return x;
+            }
+        }       
+    }
+    
     public double calculateHigherPriorityOperand() {
         double x = parseNumber();
         while(true) {

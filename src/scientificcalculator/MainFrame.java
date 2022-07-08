@@ -13,8 +13,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    //position is for number of char in user's input 
-    //ch is ascii code for the char from user's input
+    
     int pos = -1, ch;
 
     public MainFrame() {
@@ -661,12 +660,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     //Fucn to add number/symbol/operand/point or not 
     public void autoAddorRemove(String button) {
-        if (!resultField.getText().isEmpty()) {
-            //last char in user's input
+        if (!resultField.getText().isEmpty()) {          
             char lastChar = resultField.getText().charAt(resultField.getText().length() - 1);
 
             switch (button) {
-                //if user set symbol 
+                
                 case "symbol" -> {
                     switch (lastChar) {
                         case 'e', 'π' -> {
@@ -686,7 +684,7 @@ public class MainFrame extends javax.swing.JFrame {
                         }
 
                         case '0' -> {
-                            //Avoid repetition of zero
+                            
                             if (resultField.getText().equals("0") || resultField.getText().endsWith("+0") || resultField.getText().endsWith("-0")
                                     || resultField.getText().endsWith("^0") || resultField.getText().endsWith("%0") || resultField.getText().endsWith("×0")
                                     || resultField.getText().endsWith("÷0") || resultField.getText().endsWith("√0") || resultField.getText().endsWith("(0")
@@ -700,7 +698,6 @@ public class MainFrame extends javax.swing.JFrame {
                 //if user set operand
                 case "operand" -> {
                     switch (lastChar) {
-                        //Avoid repetition of operand
                         case '+', '-', '×', '÷', '%', '.' -> {
                             resultField.setText(resultField.getText().substring(0, resultField.getText().length() - 1));
                         }
@@ -709,15 +706,14 @@ public class MainFrame extends javax.swing.JFrame {
                 //if user set point                
                 case "point" -> {
                     switch (lastChar) {
-                        //add zero before point
                         case '+', '-', '×', '÷', '%', '(', '√', 'π', 's', 'n', '^' -> {
                             resultField.setText(resultField.getText() + "0");
                         }
-                        //add operand before point
+                        
                         case ')' -> {
                             resultField.setText(resultField.getText() + "×0");
                         }
-                        //Avoid repetition of point
+                        
                         case '.' -> {
                             resultField.setText(resultField.getText().substring(0, resultField.getText().length() - 1));
                         }
@@ -727,13 +723,10 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 
-    //Func to go char forward in user's input
     public void nextChar() {
-        //if we have next char set it else set -1
         ch = (++pos < resultField.getText().length()) ? resultField.getText().charAt(pos) : -1;
     }
 
-    //Fucn to know is sended char or not
     public boolean eat(char c) {
 
         if (ch == c) {
@@ -746,7 +739,6 @@ public class MainFrame extends javax.swing.JFrame {
 //    public double parseInput() {
 //        nextChar();
 //    }
-    //Func to get first number (value) from user's input
 
     public double parseNumber() {
         double x;
@@ -754,22 +746,17 @@ public class MainFrame extends javax.swing.JFrame {
 //        if (eat('(')) {
 //            x = parseExpression();
 //            eat(')');
-//        }
-        //if it's first number is e         
+//        }         
         if (eat('e')) {
             x = Math.E;
         } else if (eat('π')) {
             x = Math.PI;
-            //if it's number ascii code for ch between 9 and 0 
-            //that mean it is number or it is point and that mean there is number
-        } else if ((ch >= '0' && ch <= '9') || ch == '.') {
-            //get new pos while there is a number 
+            
+        } else if ((ch >= '0' && ch <= '9') || ch == '.') {           
             while ((ch >= '0' && ch <= '9') || ch == '.') {
                 nextChar();
             }
-            //the number is the oldPos to pos (the number that get)
             x = Double.parseDouble(resultField.getText().substring(oldPos, pos));
-            //if it is char like tan or cos (symbol) get old char to do the operatoin
         } else if ((ch >= 'a' && ch <= 'z') || ch == '√') {
             while ((ch >= 'a' && ch <= 'z') || ch == '√') {
                 nextChar();
@@ -801,7 +788,7 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             throw new RuntimeException("Unexpected" + (char) ch);
         }
-        //after all this there is number in x... check if there is power symbol and then calculate x^(the next number from call again)
+        
         if (eat('^')) {
             x = Math.pow(x, parseNumber());
         }

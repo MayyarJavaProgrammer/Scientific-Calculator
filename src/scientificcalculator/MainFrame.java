@@ -13,7 +13,6 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    
     int pos = -1, ch;
 
     public MainFrame() {
@@ -660,11 +659,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     //Fucn to add number/symbol/operand/point or not 
     public void autoAddorRemove(String button) {
-        if (!resultField.getText().isEmpty()) {          
+        if (!resultField.getText().isEmpty()) {
             char lastChar = resultField.getText().charAt(resultField.getText().length() - 1);
 
             switch (button) {
-                
+
                 case "symbol" -> {
                     switch (lastChar) {
                         case 'e', 'π' -> {
@@ -684,7 +683,7 @@ public class MainFrame extends javax.swing.JFrame {
                         }
 
                         case '0' -> {
-                            
+
                             if (resultField.getText().equals("0") || resultField.getText().endsWith("+0") || resultField.getText().endsWith("-0")
                                     || resultField.getText().endsWith("^0") || resultField.getText().endsWith("%0") || resultField.getText().endsWith("×0")
                                     || resultField.getText().endsWith("÷0") || resultField.getText().endsWith("√0") || resultField.getText().endsWith("(0")
@@ -709,11 +708,11 @@ public class MainFrame extends javax.swing.JFrame {
                         case '+', '-', '×', '÷', '%', '(', '√', 'π', 's', 'n', '^' -> {
                             resultField.setText(resultField.getText() + "0");
                         }
-                        
+
                         case ')' -> {
                             resultField.setText(resultField.getText() + "×0");
                         }
-                        
+
                         case '.' -> {
                             resultField.setText(resultField.getText().substring(0, resultField.getText().length() - 1));
                         }
@@ -736,54 +735,58 @@ public class MainFrame extends javax.swing.JFrame {
 
         return false;
     }
-//    public double parseInput() {
-//        nextChar();
-//    }
-  
+
+    public double parseInput() {
+        nextChar();
+        double x = calculateLowerPriorityOperand();
+        return x;
+    }
+
     public double calculateLowerPriorityOperand() {
         //calculate Higher first 
         double x = calculateHigherPriorityOperand();
-        while(true) {
-            if(eat('×')) {
+        while (true) {
+            if (eat('×')) {
                 x *= parseNumber();
-            } else if(eat('÷')) {
+            } else if (eat('÷')) {
                 x /= parseNumber();
-            }else if (eat('%')) {
+            } else if (eat('%')) {
                 x %= parseNumber();
             } else {
                 return x;
             }
-        }       
+        }
     }
-    
+
     public double calculateHigherPriorityOperand() {
         double x = parseNumber();
-        while(true) {
-            if(eat('×')) {
+        while (true) {
+            if (eat('×')) {
                 x *= parseNumber();
-            } else if(eat('÷')) {
+            } else if (eat('÷')) {
                 x /= parseNumber();
-            }else if (eat('%')) {
+            } else if (eat('%')) {
                 x %= parseNumber();
             } else {
                 return x;
             }
-        }       
+        }
     }
-    
+
     public double parseNumber() {
         double x;
         int oldPos = pos;
-//        if (eat('(')) {
-//            x = parseExpression();
-//            eat(')');
-//        }         
+        //when we have () start from begin
+        if (eat('(')) {
+            x = calculateLowerPriorityOperand();
+            eat(')');
+        }
         if (eat('e')) {
             x = Math.E;
         } else if (eat('π')) {
             x = Math.PI;
-            
-        } else if ((ch >= '0' && ch <= '9') || ch == '.') {           
+
+        } else if ((ch >= '0' && ch <= '9') || ch == '.') {
             while ((ch >= '0' && ch <= '9') || ch == '.') {
                 nextChar();
             }
@@ -819,7 +822,7 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             throw new RuntimeException("Unexpected" + (char) ch);
         }
-        
+
         if (eat('^')) {
             x = Math.pow(x, parseNumber());
         }

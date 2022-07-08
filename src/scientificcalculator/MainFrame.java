@@ -790,6 +790,11 @@ public class MainFrame extends javax.swing.JFrame {
         }
         return result;
     }
+    
+    public void setClickedButtonText(javax.swing.JButton button, String buttonType) {
+        autoAddorRemove(buttonType);
+        resultField.setText(resultField.getText() + button.getText());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu EditMenu;

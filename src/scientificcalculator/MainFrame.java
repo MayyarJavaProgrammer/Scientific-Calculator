@@ -739,7 +739,22 @@ public class MainFrame extends javax.swing.JFrame {
 //    public double parseInput() {
 //        nextChar();
 //    }
-
+  
+    public double calculateHigherPriorityOperand() {
+        double x = parseNumber();
+        while(true) {
+            if(eat('×')) {
+                x *= parseNumber();
+            } else if(eat('÷')) {
+                x /= parseNumber();
+            }else if (eat('%')) {
+                x %= parseNumber();
+            } else {
+                return x;
+            }
+        }       
+    }
+    
     public double parseNumber() {
         double x;
         int oldPos = pos;

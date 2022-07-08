@@ -4,6 +4,8 @@
  */
 package scientificcalculator;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author PC
@@ -491,7 +493,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_resultFieldActionPerformed
 
     private void zeroBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_zeroBtnActionPerformed
 
     private void commaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commaBtnActionPerformed
@@ -499,39 +501,39 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_commaBtnActionPerformed
 
     private void oneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_oneBtnActionPerformed
 
     private void twoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_twoBtnActionPerformed
 
     private void threeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_threeBtnActionPerformed
 
     private void fourBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_fourBtnActionPerformed
 
     private void sixBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixBtnActionPerformed
-        // TODO add your handling code here:
+       setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_sixBtnActionPerformed
 
     private void fiveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_fiveBtnActionPerformed
 
     private void sevenBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_sevenBtnActionPerformed
 
     private void eightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_eightBtnActionPerformed
 
     private void nineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_nineBtnActionPerformed
 
     private void divideBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideBtnActionPerformed

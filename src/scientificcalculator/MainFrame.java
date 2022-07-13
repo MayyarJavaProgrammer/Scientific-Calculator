@@ -15,7 +15,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    int currentPosition = -1, currentChar;
+    int currentPosition = 0, currentChar;
 
     public MainFrame() {
         initComponents();

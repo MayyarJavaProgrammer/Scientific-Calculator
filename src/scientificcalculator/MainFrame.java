@@ -734,7 +734,6 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public double parseInput() {
-        nextChar();
         double result = calculateLowerPriorityOperand();
         return result;
     }

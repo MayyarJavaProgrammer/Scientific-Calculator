@@ -50,7 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         equalBtn = new javax.swing.JButton();
         sqrtBtn = new javax.swing.JButton();
         powerBtn = new javax.swing.JButton();
-        parentesesRightBtn = new javax.swing.JButton();
+        rightParenthesisBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         moduloBtn = new javax.swing.JButton();
         exponentialBtn = new javax.swing.JButton();
@@ -58,7 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
         tanBtn = new javax.swing.JButton();
         cosBtn = new javax.swing.JButton();
         sinBtn = new javax.swing.JButton();
-        parentesesLeftBtn = new javax.swing.JButton();
+        leftParenthesisBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         viemMenu = new javax.swing.JMenu();
@@ -215,10 +215,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        parentesesRightBtn.setText(")");
-        parentesesRightBtn.addActionListener(new java.awt.event.ActionListener() {
+        rightParenthesisBtn.setText(")");
+        rightParenthesisBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                parentesesRightBtnActionPerformed(evt);
+                rightParenthesisBtnActionPerformed(evt);
             }
         });
 
@@ -277,10 +277,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        parentesesLeftBtn.setText("(");
-        parentesesLeftBtn.addActionListener(new java.awt.event.ActionListener() {
+        leftParenthesisBtn.setText("(");
+        leftParenthesisBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                parentesesLeftBtnActionPerformed(evt);
+                leftParenthesisBtnActionPerformed(evt);
             }
         });
 
@@ -373,7 +373,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(moduloBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(parentesesLeftBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(leftParenthesisBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -381,7 +381,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(powerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(parentesesRightBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rightParenthesisBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -438,11 +438,11 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(sinBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(parentesesRightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rightParenthesisBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(moduloBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(exponentialBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(piBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(parentesesLeftBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(leftParenthesisBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(sevenBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -577,7 +577,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_powerBtnActionPerformed
 
-    private void parentesesRightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentesesRightBtnActionPerformed
+    private void rightParenthesisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightParenthesisBtnActionPerformed
         if(resultField.getText().matches(".*[ns√(]")) {
             int leftParenthesisCounter = 0, rightParenthesisCounter = 0;
             for(char c : resultField.getText().toCharArray()) {
@@ -590,7 +590,7 @@ public class MainFrame extends javax.swing.JFrame {
                 resultField.setText(resultField.getText() + ")");
             
         }
-    }//GEN-LAST:event_parentesesRightBtnActionPerformed
+    }//GEN-LAST:event_rightParenthesisBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
@@ -622,9 +622,9 @@ public class MainFrame extends javax.swing.JFrame {
         setClickedButtonText((JButton) evt.getSource(), "symbol");
     }//GEN-LAST:event_sinBtnActionPerformed
 
-    private void parentesesLeftBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentesesLeftBtnActionPerformed
+    private void leftParenthesisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftParenthesisBtnActionPerformed
         resultField.setText(resultField.getText() + "(");
-    }//GEN-LAST:event_parentesesLeftBtnActionPerformed
+    }//GEN-LAST:event_leftParenthesisBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
@@ -846,17 +846,17 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane historyScrollPane;
     private javax.swing.JTextArea historyTextArea;
     private javax.swing.JMenuItem keyboardShortcutsItem;
+    private javax.swing.JButton leftParenthesisBtn;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton moduloBtn;
     private javax.swing.JButton multiplicBtn;
     private javax.swing.JButton nineBtn;
     private javax.swing.JButton oneBtn;
-    private javax.swing.JButton parentesesLeftBtn;
-    private javax.swing.JButton parentesesRightBtn;
     private javax.swing.JMenuItem pasteItem;
     private javax.swing.JButton piBtn;
     private javax.swing.JButton powerBtn;
     private javax.swing.JTextField resultField;
+    private javax.swing.JButton rightParenthesisBtn;
     private javax.swing.JPopupMenu.Separator separator;
     private javax.swing.JButton sevenBtn;
     private javax.swing.JButton sinBtn;

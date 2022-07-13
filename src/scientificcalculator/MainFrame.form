@@ -149,7 +149,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="moduloBtn" min="-2" pref="45" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="parentesesLeftBtn" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="leftParenthesisBtn" min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="tanBtn" min="-2" pref="45" max="-2" attributes="0"/>
@@ -160,7 +160,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="powerBtn" alignment="0" max="32767" attributes="0"/>
-                          <Component id="parentesesRightBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="rightParenthesisBtn" alignment="0" max="32767" attributes="0"/>
                           <Component id="clearBtn" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -235,11 +235,11 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="parentesesRightBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="rightParenthesisBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="moduloBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="exponentialBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="piBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="parentesesLeftBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="leftParenthesisBtn" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -454,12 +454,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="powerBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="parentesesRightBtn">
+    <Component class="javax.swing.JButton" name="rightParenthesisBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value=")"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="parentesesRightBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rightParenthesisBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backBtn">
@@ -530,12 +530,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sinBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="parentesesLeftBtn">
+    <Component class="javax.swing.JButton" name="leftParenthesisBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="("/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="parentesesLeftBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leftParenthesisBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="clearBtn">

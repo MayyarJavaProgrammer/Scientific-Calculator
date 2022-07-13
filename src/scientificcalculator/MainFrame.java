@@ -595,7 +595,21 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_rightParenthesisBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
+        if(!resultField.getText().isEmpty()) {
+            if(resultField.getText().equals("Error") || resultField.getText().equals("cannot divide by 0")) {
+                resultField.setText("");
+            } else {
+                String temp = resultField.getText().substring(0, resultField.getText().length() - 1);
+                if(temp.length() >= 2) {
+                    switch(temp.substring(temp.length() - 2)) {
+                        case "si", "co", "ta" -> {
+                            temp = temp.substring(0, temp.length() - 2);
+                        }
+                    }
+                }
+                resultField.setText(temp);
+            }
+        }
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void moduloBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduloBtnActionPerformed

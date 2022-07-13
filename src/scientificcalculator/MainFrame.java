@@ -496,10 +496,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_zeroBtnActionPerformed
 
     private void commaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commaBtnActionPerformed
-        if(resultField.getText().isEmpty()) {
+        if (resultField.getText().isEmpty()) {
             resultField.setText("0.");
         } else {
-            setClickedButtonText((JButton)evt.getSource(), "point");
+            setClickedButtonText((JButton) evt.getSource(), "point");
         }
     }//GEN-LAST:event_commaBtnActionPerformed
 
@@ -578,17 +578,19 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_powerBtnActionPerformed
 
     private void rightParenthesisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightParenthesisBtnActionPerformed
-        if(resultField.getText().matches(".*[ns√(]")) {
+        if (resultField.getText().matches(".*[ns√(]")) {
             int leftParenthesisCounter = 0, rightParenthesisCounter = 0;
-            for(char c : resultField.getText().toCharArray()) {
-                if(c == '(') 
+            for (char c : resultField.getText().toCharArray()) {
+                if (c == '(') {
                     leftParenthesisCounter++;
-                else if(c == ')') 
+                } else if (c == ')') {
                     rightParenthesisCounter++;
+                }
             }
-            if(leftParenthesisCounter > rightParenthesisCounter)
+            if (leftParenthesisCounter > rightParenthesisCounter) {
                 resultField.setText(resultField.getText() + ")");
-            
+            }
+
         }
     }//GEN-LAST:event_rightParenthesisBtnActionPerformed
 
@@ -627,7 +629,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_leftParenthesisBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
-        // TODO add your handling code here:
+        resultField.setText("");
+        currentPosition = 0;
     }//GEN-LAST:event_clearBtnActionPerformed
 
     /**

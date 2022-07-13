@@ -426,7 +426,6 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(resultField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(tanBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -497,7 +496,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_zeroBtnActionPerformed
 
     private void commaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commaBtnActionPerformed
-        // TODO add your handling code here:
+        if(resultField.getText().isEmpty()) {
+            resultField.setText("0.");
+        } else {
+            setClickedButtonText((JButton)evt.getSource(), "point");
+        }
     }//GEN-LAST:event_commaBtnActionPerformed
 
     private void oneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneBtnActionPerformed
@@ -517,7 +520,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_fourBtnActionPerformed
 
     private void sixBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixBtnActionPerformed
-       setClickedButtonText((JButton) evt.getSource(), "number");
+        setClickedButtonText((JButton) evt.getSource(), "number");
     }//GEN-LAST:event_sixBtnActionPerformed
 
     private void fiveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveBtnActionPerformed
@@ -537,19 +540,27 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_nineBtnActionPerformed
 
     private void divideBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideBtnActionPerformed
-        // TODO add your handling code here:
+        if (!resultField.getText().isEmpty()) {
+            setClickedButtonText((JButton) evt.getSource(), "operand");
+        }
     }//GEN-LAST:event_divideBtnActionPerformed
 
     private void multiplicBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplicBtnActionPerformed
-        // TODO add your handling code here:
+        if (!resultField.getText().isEmpty()) {
+            setClickedButtonText((JButton) evt.getSource(), "operand");
+        }
     }//GEN-LAST:event_multiplicBtnActionPerformed
 
     private void subtractionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtractionBtnActionPerformed
-        // TODO add your handling code here:
+        if (!resultField.getText().isEmpty()) {
+            setClickedButtonText((JButton) evt.getSource(), "operand");
+        }
     }//GEN-LAST:event_subtractionBtnActionPerformed
 
     private void additionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additionBtnActionPerformed
-        // TODO add your handling code here:
+        if (!resultField.getText().isEmpty()) {
+            setClickedButtonText((JButton) evt.getSource(), "operand");
+        }
     }//GEN-LAST:event_additionBtnActionPerformed
 
     private void equalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalBtnActionPerformed
@@ -557,15 +568,28 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_equalBtnActionPerformed
 
     private void sqrtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqrtBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "symbol");
     }//GEN-LAST:event_sqrtBtnActionPerformed
 
     private void powerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_powerBtnActionPerformed
-        // TODO add your handling code here:
+        if (resultField.getText().matches(".*[0-9eπ)]$")) {
+            setClickedButtonText((JButton) evt.getSource(), "operand");
+        }
     }//GEN-LAST:event_powerBtnActionPerformed
 
     private void parentesesRightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentesesRightBtnActionPerformed
-        // TODO add your handling code here:
+        if(resultField.getText().matches(".*[ns√(]")) {
+            int leftParenthesisCounter = 0, rightParenthesisCounter = 0;
+            for(char c : resultField.getText().toCharArray()) {
+                if(c == '(') 
+                    leftParenthesisCounter++;
+                else if(c == ')') 
+                    rightParenthesisCounter++;
+            }
+            if(leftParenthesisCounter > rightParenthesisCounter)
+                resultField.setText(resultField.getText() + ")");
+            
+        }
     }//GEN-LAST:event_parentesesRightBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -573,31 +597,33 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void moduloBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduloBtnActionPerformed
-        // TODO add your handling code here:
+        if (!resultField.getText().isEmpty()) {
+            resultField.setText(resultField.getText() + "^");
+        }
     }//GEN-LAST:event_moduloBtnActionPerformed
 
     private void exponentialBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exponentialBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "symbol");
     }//GEN-LAST:event_exponentialBtnActionPerformed
 
     private void piBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_piBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "symbol");
     }//GEN-LAST:event_piBtnActionPerformed
 
     private void tanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "symbol");
     }//GEN-LAST:event_tanBtnActionPerformed
 
     private void cosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cosBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "symbol");
     }//GEN-LAST:event_cosBtnActionPerformed
 
     private void sinBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sinBtnActionPerformed
-        // TODO add your handling code here:
+        setClickedButtonText((JButton) evt.getSource(), "symbol");
     }//GEN-LAST:event_sinBtnActionPerformed
 
     private void parentesesLeftBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentesesLeftBtnActionPerformed
-        // TODO add your handling code here:
+        resultField.setText(resultField.getText() + "(");
     }//GEN-LAST:event_parentesesLeftBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
@@ -792,7 +818,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
         return result;
     }
-    
+
     public void setClickedButtonText(javax.swing.JButton button, String buttonType) {
         autoAddorRemove(buttonType);
         resultField.setText(resultField.getText() + button.getText());

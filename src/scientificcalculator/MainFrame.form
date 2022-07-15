@@ -58,6 +58,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Copy History"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="copyHistoryItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="clearHistoryItem">
               <Properties>

@@ -334,6 +334,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         copyHistoryItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         copyHistoryItem.setText("Copy History");
+        copyHistoryItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyHistoryItemActionPerformed(evt);
+            }
+        });
         EditMenu.add(copyHistoryItem);
 
         clearHistoryItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
@@ -695,6 +700,10 @@ public class MainFrame extends javax.swing.JFrame {
         resultField.paste();
 
     }//GEN-LAST:event_pasteItemActionPerformed
+
+    private void copyHistoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyHistoryItemActionPerformed
+       historyTextArea.copy();
+    }//GEN-LAST:event_copyHistoryItemActionPerformed
 
     /**
      * @param args the command line arguments

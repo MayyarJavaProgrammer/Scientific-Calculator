@@ -4,6 +4,7 @@
  */
 package scientificcalculator;
 
+import java.text.DecimalFormat;
 import javax.swing.JButton;
 
 /**
@@ -15,7 +16,8 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    int currentPosition = 0, currentChar;
+    int currentPosition = -1, currentChar, oldPos;
+    DecimalFormat format = new DecimalFormat("0.#");
 
     public MainFrame() {
         initComponents();
@@ -564,7 +566,25 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_additionBtnActionPerformed
 
     private void equalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalBtnActionPerformed
-        // TODO add your handling code here:
+        if (!resultField.getText().isEmpty()) {
+            String historyNewText = historyTextArea.getText() + "\n=";
+            try {
+                Double result = parseInput();
+                if (result.isInfinite()) {
+                    resultField.setText("cannot divide by 0");
+                    historyNewText += "cannot divide by 0";
+                } else {
+                    resultField.setText(format.format(result));
+                    historyNewText += format.format(result);
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                resultField.setText("Error");
+                historyNewText += "Error";
+            }
+            historyTextArea.setText(historyNewText + "\n\n");
+            currentPosition = -1;
+        }
     }//GEN-LAST:event_equalBtnActionPerformed
 
     private void sqrtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqrtBtnActionPerformed
@@ -595,13 +615,13 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_rightParenthesisBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        if(!resultField.getText().isEmpty()) {
-            if(resultField.getText().equals("Error") || resultField.getText().equals("cannot divide by 0")) {
+        if (!resultField.getText().isEmpty()) {
+            if (resultField.getText().equals("Error") || resultField.getText().equals("cannot divide by 0")) {
                 resultField.setText("");
             } else {
                 String temp = resultField.getText().substring(0, resultField.getText().length() - 1);
-                if(temp.length() >= 2) {
-                    switch(temp.substring(temp.length() - 2)) {
+                if (temp.length() >= 2) {
+                    switch (temp.substring(temp.length() - 2)) {
                         case "si", "co", "ta" -> {
                             temp = temp.substring(0, temp.length() - 2);
                         }
@@ -614,7 +634,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void moduloBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduloBtnActionPerformed
         if (!resultField.getText().isEmpty()) {
-            resultField.setText(resultField.getText() + "^");
+            resultField.setText(resultField.getText() + "%");
         }
     }//GEN-LAST:event_moduloBtnActionPerformed
 
@@ -644,7 +664,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         resultField.setText("");
-        currentPosition = 0;
+        currentPosition = -1;
     }//GEN-LAST:event_clearBtnActionPerformed
 
     /**
@@ -738,8 +758,13 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void nextChar() {
-        currentChar = (++currentPosition < resultField.getText().length())
-                ? resultField.getText().charAt(currentPosition) : -1;
+        if (++currentPosition < resultField.getText().length()) {
+             currentChar = resultField.getText().charAt(currentPosition);
+        } 
+        else {
+            currentChar = -1;
+        }
+
     }
 
     public boolean removeChar(char c) {
@@ -751,6 +776,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public double parseInput() {
+        nextChar();
         double result = calculateLowerPriorityOperand();
         return result;
     }
@@ -759,12 +785,10 @@ public class MainFrame extends javax.swing.JFrame {
 //        calculate Higher first     
         double result = calculateHigherPriorityOperand();
         while (true) {
-            if (removeChar('×')) {
-                result *= parseNumber();
-            } else if (removeChar('÷')) {
-                result /= parseNumber();
-            } else if (removeChar('%')) {
-                result %= parseNumber();
+            if (removeChar('+')) {
+                result += parseNumber();
+            } else if (removeChar('-')) {
+                result -= parseNumber();
             } else {
                 return result;
             }
@@ -787,8 +811,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public double parseNumber() {
-        double result;
-        int oldPos = currentPosition;
+        double result = 0;
+        oldPos = currentPosition;
 //        when we have() start from begin     
         if (removeChar('(')) {
             result = calculateLowerPriorityOperand();

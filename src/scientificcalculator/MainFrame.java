@@ -4,8 +4,14 @@
  */
 package scientificcalculator;
 
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Toolkit;
 import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -83,7 +89,7 @@ public class MainFrame extends javax.swing.JFrame {
         historyTextArea.setAutoscrolls(false);
         historyScrollPane.setViewportView(historyTextArea);
 
-        resultField.setEditable(false);
+        resultField.setFocusable(false);
         resultField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resultFieldActionPerformed(evt);
@@ -318,6 +324,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         pasteItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         pasteItem.setText("Paste");
+        pasteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pasteItemActionPerformed(evt);
+            }
+        });
         EditMenu.add(pasteItem);
         EditMenu.add(separator);
 
@@ -680,6 +691,11 @@ public class MainFrame extends javax.swing.JFrame {
         resultField.copy();
     }//GEN-LAST:event_copyItemActionPerformed
 
+    private void pasteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteItemActionPerformed
+        resultField.paste();
+
+    }//GEN-LAST:event_pasteItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -690,21 +706,11 @@ public class MainFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         //</editor-fold>
 
         /* Create and display the form */

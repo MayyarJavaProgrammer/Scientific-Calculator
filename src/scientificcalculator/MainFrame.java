@@ -481,7 +481,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-END:initComponents
 
     private void historyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyItemActionPerformed
-        // TODO add your handling code here:
+        if (((javax.swing.JCheckBoxMenuItem) evt.getSource()).isSelected()) {
+            this.setSize(517, 386);
+        } else {
+            this.setSize(276, 386);
+        }
     }//GEN-LAST:event_historyItemActionPerformed
 
     private void clearHistoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearHistoryItemActionPerformed
@@ -489,7 +493,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_clearHistoryItemActionPerformed
 
     private void resultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultFieldActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_resultFieldActionPerformed
 
     private void zeroBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroBtnActionPerformed
@@ -758,9 +762,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void nextChar() {
         if (++currentPosition < resultField.getText().length()) {
-             currentChar = resultField.getText().charAt(currentPosition);
-        } 
-        else {
+            currentChar = resultField.getText().charAt(currentPosition);
+        } else {
             currentChar = -1;
         }
 

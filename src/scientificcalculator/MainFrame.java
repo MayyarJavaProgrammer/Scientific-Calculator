@@ -309,6 +309,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         copyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         copyItem.setText("Copy");
+        copyItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyItemActionPerformed(evt);
+            }
+        });
         EditMenu.add(copyItem);
 
         pasteItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -669,6 +674,11 @@ public class MainFrame extends javax.swing.JFrame {
         resultField.setText("");
         currentPosition = -1;
     }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void copyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyItemActionPerformed
+        resultField.selectAll();
+        resultField.copy();
+    }//GEN-LAST:event_copyItemActionPerformed
 
     /**
      * @param args the command line arguments

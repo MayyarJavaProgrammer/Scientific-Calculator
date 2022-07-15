@@ -76,7 +76,6 @@ public class MainFrame extends javax.swing.JFrame {
         aboutItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(501, 348));
 
         historyTextArea.setEditable(false);
         historyTextArea.setColumns(20);
@@ -486,11 +485,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_historyItemActionPerformed
 
     private void clearHistoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearHistoryItemActionPerformed
-        // TODO add your handling code here:
+        historyTextArea.setText("");
     }//GEN-LAST:event_clearHistoryItemActionPerformed
 
     private void resultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultFieldActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_resultFieldActionPerformed
 
     private void zeroBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroBtnActionPerformed
@@ -567,7 +566,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void equalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalBtnActionPerformed
         if (!resultField.getText().isEmpty()) {
-            String historyNewText = historyTextArea.getText() + "\n=";
+            String historyNewText = historyTextArea.getText() + resultField.getText() + "\n=";
             try {
                 Double result = parseInput();
                 if (result.isInfinite()) {

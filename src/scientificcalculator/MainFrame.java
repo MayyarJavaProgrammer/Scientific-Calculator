@@ -741,6 +741,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_pasteItemActionPerformed
 
     private void copyHistoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyHistoryItemActionPerformed
+        historyTextArea.selectAll();
         historyTextArea.copy();
     }//GEN-LAST:event_copyHistoryItemActionPerformed
 

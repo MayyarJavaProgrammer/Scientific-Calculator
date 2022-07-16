@@ -4,30 +4,23 @@
  */
 package scientificcalculator;
 
-import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
  * @author PC
  */
-public class MainFrame extends javax.swing.JFrame {
+public class NewJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainFrame
+     * Creates new form NewJFrame
      */
-    int currentPosition = -1, currentChar, oldPos;
+        int currentPosition = -1, currentChar, oldPos;
     DecimalFormat format = new DecimalFormat("0.#");
-
-    public MainFrame() {
+    public NewJFrame() {
         initComponents();
     }
 
@@ -39,6 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {//GEN-BEGIN:initComponents
 
+        jButton1 = new javax.swing.JButton();
         historyScrollPane = new javax.swing.JScrollPane();
         historyTextArea = new javax.swing.JTextArea();
         resultField = new javax.swing.JTextField();
@@ -83,14 +77,14 @@ public class MainFrame extends javax.swing.JFrame {
         keyboardShortcutsItem = new javax.swing.JMenuItem();
         aboutItem = new javax.swing.JMenuItem();
 
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
         });
-
-        historyScrollPane.setFocusable(false);
 
         historyTextArea.setEditable(false);
         historyTextArea.setColumns(20);
@@ -100,6 +94,11 @@ public class MainFrame extends javax.swing.JFrame {
         historyScrollPane.setViewportView(historyTextArea);
 
         resultField.setFocusable(false);
+        resultField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resultFieldActionPerformed(evt);
+            }
+        });
 
         zeroBtn.setText("0");
         zeroBtn.setFocusable(false);
@@ -535,9 +534,14 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(276, 386));
-        setLocationRelativeTo(null);
+        pack();
     }//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+          if (evt.getKeyCode() == KeyEvent.VK_0) {
+              System.out.println("hello");
+        } 
+    }//GEN-LAST:event_formKeyPressed
 
     private void historyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyItemActionPerformed
         if (((javax.swing.JCheckBoxMenuItem) evt.getSource()).isSelected()) {
@@ -547,9 +551,39 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_historyItemActionPerformed
 
+    private void copyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyItemActionPerformed
+        resultField.selectAll();
+        resultField.copy();
+    }//GEN-LAST:event_copyItemActionPerformed
+
+    private void pasteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteItemActionPerformed
+        resultField.paste();
+    }//GEN-LAST:event_pasteItemActionPerformed
+
+    private void copyHistoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyHistoryItemActionPerformed
+        historyTextArea.copy();
+    }//GEN-LAST:event_copyHistoryItemActionPerformed
+
     private void clearHistoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearHistoryItemActionPerformed
         historyTextArea.setText("");
     }//GEN-LAST:event_clearHistoryItemActionPerformed
+
+    private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
+        String str = "<html>"
+        + "<big>Scientific Calculator</big><br><br>"
+        + "<p>Prepared by <b>Mayyar Zedan</b><br><br>"
+        + "If you have any comments, ideas.. just let me know<br><br>"
+        + "email:   mayarzidane1@gmail.com<br>"
+        + "<u>Note</u><br>"
+        + "I used JDK 17 to compile the source code.<br><br><br>"
+        + "<html>";
+
+        JOptionPane.showMessageDialog(getContentPane(), str, "About", JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_aboutItemActionPerformed
+
+    private void resultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resultFieldActionPerformed
 
     private void zeroBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroBtnActionPerformed
         setClickedButtonText((JButton) evt.getSource(), "number");
@@ -662,12 +696,12 @@ public class MainFrame extends javax.swing.JFrame {
                 if (c == '(') {
                     leftParenthesisCounter++;
                 } else if (c == ')') {
-                    rightParenthesisCounter++;
-                }
+                rightParenthesisCounter++;
             }
-            if (leftParenthesisCounter > rightParenthesisCounter) {
-                resultField.setText(resultField.getText() + ")");
-            }
+        }
+        if (leftParenthesisCounter > rightParenthesisCounter) {
+            resultField.setText(resultField.getText() + ")");
+        }
 
         }
     }//GEN-LAST:event_rightParenthesisBtnActionPerformed
@@ -725,113 +759,6 @@ public class MainFrame extends javax.swing.JFrame {
         currentPosition = -1;
     }//GEN-LAST:event_clearBtnActionPerformed
 
-    private void copyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyItemActionPerformed
-        resultField.selectAll();
-        resultField.copy();
-    }//GEN-LAST:event_copyItemActionPerformed
-
-    private void pasteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteItemActionPerformed
-        resultField.paste();
-
-    }//GEN-LAST:event_pasteItemActionPerformed
-
-    private void copyHistoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyHistoryItemActionPerformed
-        historyTextArea.copy();
-    }//GEN-LAST:event_copyHistoryItemActionPerformed
-
-    private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
-        String str = "<html>"
-                + "<big>Scientific Calculator</big><br><br>"
-                + "<p>Prepared by <b>Mayyar Zedan</b><br><br>"
-                + "If you have any comments, ideas.. just let me know<br><br>"
-                + "email:   mayarzidane1@gmail.com<br>"
-                + "<u>Note</u><br>"
-                + "I used JDK 17 to compile the source code.<br><br><br>"
-                + "<html>";
-
-        JOptionPane.showMessageDialog(getContentPane(), str, "About", JOptionPane.PLAIN_MESSAGE);
-    }//GEN-LAST:event_aboutItemActionPerformed
-
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        switch (evt.getKeyCode()) {
-            case java.awt.event.KeyEvent.VK_0:
-                zeroBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_1:
-                oneBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_2:
-                twoBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_3:
-                threeBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_4:
-                fourBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_5:
-                fiveBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_6:
-                sixBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_7:
-                sevenBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_8:
-                eightBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_9:
-                nineBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_C:
-                clearBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_BACK_SPACE:
-                backBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_ENTER:
-            case java.awt.event.KeyEvent.VK_EQUALS:
-                equalBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_PLUS:
-                additionBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_MINUS:
-                subtractionBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_MULTIPLY:
-                multiplicBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_DIVIDE:
-                divideBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_ESCAPE:
-                System.exit(0);
-            case java.awt.event.KeyEvent.VK_E:
-                exponentialBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_T:
-                tanBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_S:
-                sinBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_O:
-                cosBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_P:
-                piBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_V:
-                sqrtBtn.doClick();
-                break;
-            default:
-                Toolkit.getDefaultToolkit().beep();
-                break;
-        }
-    }//GEN-LAST:event_formKeyPressed
-
     /**
      * @param args the command line arguments
      */
@@ -842,21 +769,32 @@ public class MainFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                new NewJFrame().setVisible(true);
             }
         });
     }
 
+    
     public void autoAddorRemove(String button) {
         if (!resultField.getText().isEmpty()) {
             char lastChar = resultField.getText().charAt(resultField.getText().length() - 1);
@@ -1017,7 +955,7 @@ public class MainFrame extends javax.swing.JFrame {
         autoAddorRemove(buttonType);
         resultField.setText(resultField.getText() + button.getText());
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu EditMenu;
     private javax.swing.JMenuItem aboutItem;
@@ -1039,6 +977,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem historyItem;
     private javax.swing.JScrollPane historyScrollPane;
     private javax.swing.JTextArea historyTextArea;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenuItem keyboardShortcutsItem;
     private javax.swing.JButton leftParenthesisBtn;
     private javax.swing.JMenuBar menuBar;

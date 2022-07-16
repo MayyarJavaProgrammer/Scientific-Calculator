@@ -84,6 +84,8 @@ public class MainFrame extends javax.swing.JFrame {
         aboutItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ScientificCalculator");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/scientificcalculator/icon/ScientificCalculator.png")).getImage());
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

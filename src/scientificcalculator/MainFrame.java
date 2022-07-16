@@ -389,6 +389,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         keyboardShortcutsItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         keyboardShortcutsItem.setText("Keyboard Shortcuts");
+        keyboardShortcutsItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keyboardShortcutsItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(keyboardShortcutsItem);
 
         aboutItem.setText("About");
@@ -794,18 +799,6 @@ public class MainFrame extends javax.swing.JFrame {
             case java.awt.event.KeyEvent.VK_EQUALS:
                 equalBtn.doClick();
                 break;
-            case java.awt.event.KeyEvent.VK_PLUS:
-                additionBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_MINUS:
-                subtractionBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_MULTIPLY:
-                multiplicBtn.doClick();
-                break;
-            case java.awt.event.KeyEvent.VK_DIVIDE:
-                divideBtn.doClick();
-                break;
             case java.awt.event.KeyEvent.VK_ESCAPE:
                 System.exit(0);
             case java.awt.event.KeyEvent.VK_E:
@@ -831,6 +824,25 @@ public class MainFrame extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_formKeyPressed
+
+    private void keyboardShortcutsItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keyboardShortcutsItemActionPerformed
+        String str = "<html>"
+                + "<ul>"
+                + "<li>Press <b>v</b> to add <b>√</b>.</li>"
+                + "<li>Press <b>p</b> to add <b>π</b>.</li>"
+                + "<li>Press <b>o</b> to add <b>cos</b>.</li>"
+                + "<li>Press <b>s</b> to add <b>sin</b>.</li>"
+                + "<li>Press <b>t</b> to add <b>tan</b>.</li>"
+                + "<li>Press <b>=</b> or <b>Enter</b> to get the result</li>"
+                + "<li>Press <b>BackSpace</b> to clear last character entered.</li>"
+                + "<li>Press <b>c</b> to clear all characters entered.</li>"
+                + "<li>Press <b>Any number</b> to add it.</li>"
+                + "</ul>"
+                + "<html>";
+
+        JOptionPane.showMessageDialog(getContentPane(), str, "Keyboard Shortcuts", JOptionPane.PLAIN_MESSAGE);
+
+    }//GEN-LAST:event_keyboardShortcutsItemActionPerformed
 
     /**
      * @param args the command line arguments

@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -359,6 +360,11 @@ public class MainFrame extends javax.swing.JFrame {
         helpMenu.add(keyboardShortcutsItem);
 
         aboutItem.setText("About");
+        aboutItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutItem);
 
         menuBar.add(helpMenu);
@@ -702,8 +708,21 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_pasteItemActionPerformed
 
     private void copyHistoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyHistoryItemActionPerformed
-       historyTextArea.copy();
+        historyTextArea.copy();
     }//GEN-LAST:event_copyHistoryItemActionPerformed
+
+    private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
+        String str = "<html>"
+                + "<big>Scientific Calculator</big><br><br>"
+                + "<p>Prepared by <b>Mayyar Zedan</b><br><br>"
+                + "If you have any comments, ideas.. just let me know<br><br>"
+                + "email:   mayarzidane1@gmail.com<br>"
+                + "<u>Note</u><br>"
+                + "I used JDK 17 to compile the source code.<br><br><br>"
+                + "<html>";
+
+        JOptionPane.showMessageDialog(getContentPane(), str, "About", JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_aboutItemActionPerformed
 
     /**
      * @param args the command line arguments

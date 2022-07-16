@@ -819,6 +819,9 @@ public class MainFrame extends javax.swing.JFrame {
             case java.awt.event.KeyEvent.VK_V:
                 sqrtBtn.doClick();
                 break;
+            case java.awt.event.KeyEvent.VK_PERIOD:
+                commaBtn.doClick();
+                break;
             default:
                 Toolkit.getDefaultToolkit().beep();
                 break;
